@@ -1,1 +1,1 @@
-babel-and-webpack-practice
+바벨과 웹팩 연습 저장소입니다.
