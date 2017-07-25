@@ -4,6 +4,11 @@ const babel = require('babel-core'),
 
 let babelrc = JSON.parse(fs.readFileSync(path.join(__dirname, '../', '.babelrc')));
 
-babel.transformFile('code.js', babelrc, (err, {code, }) => {
-	fs.writeFileSync(path.join(__dirname, 'translate.js'), code);
+babel.transformFile('code.js', babelrc, (err, {code}) => {
+	if (err) {
+		console.log('에러 발생');
+		console.log(err);
+	} else {
+		fs.writeFileSync(path.join(__dirname, 'translate.js'), code);
+	}
 });

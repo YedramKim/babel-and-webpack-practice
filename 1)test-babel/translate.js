@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var asyncFunction = function () {
 	var _ref = _asyncToGenerator(regeneratorRuntime.mark(function _callee() {
@@ -38,7 +38,7 @@ var asyncFunction = function () {
 						_context.t0.log.call(_context.t0, _context.t1);
 
 					case 11:
-					case "end":
+					case 'end':
 						return _context.stop();
 				}
 			}
@@ -50,7 +50,17 @@ var asyncFunction = function () {
 	};
 }();
 
+var _module2 = require('module.js');
+
+var _module3 = _interopRequireDefault(_module2);
+
+require('babel-polyfill');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var promise = new Promise(function (res, rej) {
 	res(10);
@@ -61,6 +71,8 @@ var obj = {
 	num: 10
 };
 
+var obj2 = _defineProperty({}, 'ab' + 'bc', 10);
+
 ;
 
-asyncFunction.call.apply(asyncFunction, [obj].concat([1, 2, 3]));
+asyncFunction.call(obj);

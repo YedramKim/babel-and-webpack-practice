@@ -1,3 +1,6 @@
+import module, {ex} from 'module.js';
+import 'babel-polyfill';
+
 let promise = new Promise((res, rej) => {
 	res(10);
 }).then((data) => {
@@ -6,6 +9,10 @@ let promise = new Promise((res, rej) => {
 let obj = {
 	num: 10
 };
+
+let obj2 = {
+	['ab' + 'bc']: 10
+}
 
 async function asyncFunction() {
 	let prom1;
@@ -25,4 +32,4 @@ async function asyncFunction() {
 	console.log(await prom1);
 };
 
-obj::asyncFunction(...[1, 2, 3]);
+obj::asyncFunction();

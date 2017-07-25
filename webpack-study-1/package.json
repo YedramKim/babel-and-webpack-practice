@@ -1,0 +1,9 @@
+{
+ "name": "webpack-study-1",
+ "version": "1.0.0",
+ "main": "index.js",
+ "license": "MIT",
+ "scripts": {
+  "build1": "webpack entry.js bundle.js"
+ }
+}
