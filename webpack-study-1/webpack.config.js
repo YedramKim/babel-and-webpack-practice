@@ -1,22 +1,20 @@
 
 
 module.exports = {
-	entry: './entry.js',
+	entry: {
+		bundle: './entry.js',
+		sub: './file2.js'
+	},
 
 	output: {
-		filename: 'bundle.js'
+		path: __dirname + '/bundle',
+		filename: '[name].js'
 	},
 	module: {
 		rules: [
 			{
 				test: /\.css$/,
 				use: ['style-loader', 'css-loader']
-			},
-			{
-				enforce: 'pre',
-				test: /\.js$/,
-				exclude: /node_modules/,
-				loader: 'eslint-loader'
 			},
 			{
 				test: /\.js$/,
