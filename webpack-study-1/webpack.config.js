@@ -1,9 +1,8 @@
-
+const Extract = require('extract-text-webpack-plugin');
 
 module.exports = {
 	entry: {
-		bundle: './entry.js',
-		sub: './file2.js'
+		bundle: './entry.js'
 	},
 
 	output: {
@@ -14,7 +13,10 @@ module.exports = {
 		rules: [
 			{
 				test: /\.css$/,
-				use: ['style-loader', 'css-loader']
+				use: Extract.extract({
+					use: 'css-loader',
+					fallback: 'style-loader'
+				})
 			},
 			{
 				test: /\.js$/,
@@ -29,7 +31,21 @@ module.exports = {
 						}]
 					]
 				}
+			},
+			{
+				test: /\.txt$/,
+				loader: 'raw-loader'
+			},
+			{
+				test: /\.(png|svg|jpg|gif)$/,
+				use: ['file-loader'],
+				// options: {
+				// 	name: '[name].[ext]'
+				// }
 			}
 		]
-	}
+	},
+	plugins: [
+		new Extract('./style.css')
+	]
 }
