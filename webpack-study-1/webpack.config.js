@@ -2,15 +2,12 @@ process.env.NODE_ENV = 'development';
 const Extract = require('extract-text-webpack-plugin');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 let uglify1 = webpack.optimize.UglifyJsPlugin;
 let uglify2 = require('uglifyjs-webpack-plugin');
 
-console.log('패스');
-console.log(require('path').resolve(__dirname,'src'));
-console.log(require('path').join(__dirname,'src'));
-
 module.exports = {
-	entry: './assets/entry.js',
+	entry: ['./assets/entry.js'],
 
 	output: {
 		path: __dirname + '/bundle',
@@ -21,11 +18,10 @@ module.exports = {
 		rules: [
 			{
 				test: /\.css$/,
-				// use: Extract.extract({
-				// 	use: 'css-loader',
-				// 	fallback: 'style-loader'
-				// })
-				use: ['style-loader', 'css-loader']
+				use: Extract.extract({
+					use: 'css-loader',
+					fallback: 'style-loader'
+				})
 			},
 			{
 				test: /\.js$/,
@@ -59,17 +55,16 @@ module.exports = {
 		]
 	},
 	plugins: [
-		new webpack.HotModuleReplacementPlugin(),
+		// new webpack.HotModuleReplacementPlugin(),
+		new CleanWebpackPlugin(['bundle']),
 		new HtmlWebpackPlugin({
       filename: './index.html',
-      template: './index.html',
+      template: './assets/index.html',
       inject: true
-    })
-		// new Extract('./style.css'),
-		// new webpack.optimize.UglifyJsPlugin(),
-		// new webpack.optimize.CommonsChunkPlugin({
-		// 	name: 'common',
-		// 	filename: 'common.js'
-		// })
+    }),
+		new Extract('./style.css'),
+		new webpack.optimize.UglifyJsPlugin({
+			exclude: /node_modules/
+		})
 	]
 }
