@@ -1,0 +1,19 @@
+{
+  "name": "flow-test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "babel-core": "^6.25.0"
+  },
+  "scripts": {
+		"build": "babel flow.js",
+		"flow-build": ""
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-plugin-transform-es2015-arrow-functions": "^6.22.0",
+    "babel-preset-flow": "^6.23.0",
+    "flow": "^0.2.3"
+  }
+}
