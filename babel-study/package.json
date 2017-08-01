@@ -5,13 +5,17 @@
   "license": "MIT",
   "scripts": {
     "babel-node-1": "babel-node script.js",
-    "babel-build-1": "babel script.js -d build"
+    "babel-node-2": "babel-node script2.js --plugins=transform-object-rest-spread",
+    "babel-node-3": "babel-node script2.js",
+    "babel-build-1": "babel script.js -d dist",
+    "babel-build-2": "babel script2.js -d dist --plugins=transform-object-rest-spread"
   },
   "devDependencies": {
     "babel": "^6.23.0",
     "babel-cli": "^6.24.1",
     "babel-core": "^6.25.0",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1"
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0"
   },
   "dependencies": {
     "babel-helper-vue-jsx-merge-props": "^2.0.2",
