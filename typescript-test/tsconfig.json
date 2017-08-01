@@ -1,0 +1,14 @@
+{
+	"compilerOptions": {
+		"outFile": "./build.js",
+		"lib": [
+			"es2016",
+			"dom",
+			"es2015.promise"
+		]
+	},
+	"files": [
+		"typescript-test.ts",
+		"typescript-test2.ts"
+	]
+}
